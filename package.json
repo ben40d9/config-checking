@@ -1,0 +1,19 @@
+{
+  "name": "config-checking",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ben40d9/config-checking.git"
+  },
+  "author": "Ben Paley",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ben40d9/config-checking/issues"
+  },
+  "homepage": "https://github.com/ben40d9/config-checking#readme"
+}
