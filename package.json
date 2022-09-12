@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/ben40d9/config-checking/issues"
   },
-  "homepage": "https://github.com/ben40d9/config-checking#readme"
+  "homepage": "https://github.com/ben40d9/config-checking#readme",
+  "dependencies": {
+    "dotenv": "^16.0.2"
+  }
 }
