@@ -19,10 +19,12 @@ function configurePort() {
   if (process.env.PORT === undefined) {
     // use the default. check definition of userPort!
     port = userPort;
+  } else {
+    port = process.env.PORT;
   }
 
-  // if the above "if" case isn't met, set port = to the shell env var
-  port = process.env.PORT || 3000;
+  // // if the above "if" case isn't met, set port = to the shell env var
+  // port = process.env.PORT || 3000;
 
   // return port, so we can use it wherever this function is called
   return port;
