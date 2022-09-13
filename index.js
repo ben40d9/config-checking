@@ -4,6 +4,8 @@ const express = require("express");
 const app = express();
 const { configureEnv } = require("./config/configureEnv");
 
+console.log(process.env);
+
 //in the vscode terminal run : NODE_ENV=production node index.js
 //or NODE_ENV=development node index.js, to get the data
 //corresponding to the node environment set
