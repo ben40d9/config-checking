@@ -22,7 +22,7 @@ function configurePort() {
   }
 
   // if the above "if" case isn't met, set port = to the shell env var
-  port = process.env.PORT;
+  port = process.env.PORT || 3000;
 
   // return port, so we can use it wherever this function is called
   return port;
