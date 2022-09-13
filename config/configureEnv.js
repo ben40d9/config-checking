@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-const { userPort } = require("./default");
+const { port: userPort } = require("./default");
 
 function configureEnv() {
   const port = configurePort();
