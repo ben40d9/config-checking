@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 const { port: userPort } = require("./default");
 
 function configureEnv() {
@@ -16,7 +15,10 @@ function configurePort() {
   let port;
 
   // if port is not set...
-  if (process.env.NODE_CONFIG_APP_PORT === undefined) {
+  if (
+    process.env.NODE_CONFIG_APP_PORT === undefined ||
+    process.env.NODE_CONFIG_APP_PORT === "EXPRESS-SERVER-PORT"
+  ) {
     // use the default. check definition of userPort!
     port = userPort;
   } else {
@@ -34,7 +36,10 @@ function configureEmail() {
   // configure email...follows same flow, except...
   let email;
   // if email is undefined,
-  if (process.env.NODE_CONFIG_APP_EMAIL === undefined) {
+  if (
+    process.env.NODE_CONFIG_APP_EMAIL === undefined ||
+    process.env.NODE_CONFIG_APP_PORT === "EXPRESS-SERVER-PORT"
+  ) {
     // run a function that will run inquirer prompt,
     // asking user for email etc.
     // right now its just a mock, see below.
