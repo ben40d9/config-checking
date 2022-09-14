@@ -1,5 +1,7 @@
 const { port: userPort } = require("./default");
 
+const { NODE_CONFIG_APP_PORT, NODE_CONFIG_APP_EMAIL } = process.env;
+
 function configureEnv() {
   const port = configurePort();
   const email = configureEmail();
@@ -16,17 +18,17 @@ function configurePort() {
 
   // if port is not set...
   if (
-    process.env.NODE_CONFIG_APP_PORT === undefined ||
-    process.env.NODE_CONFIG_APP_PORT === "EXPRESS-SERVER-PORT"
+    NODE_CONFIG_APP_PORT === undefined ||
+    NODE_CONFIG_APP_PORT === "EXPRESS-SERVER-PORT"
   ) {
     // use the default. check definition of userPort!
     port = userPort;
   } else {
-    port = process.env.NODE_CONFIG_APP_PORT;
+    port = NODE_CONFIG_APP_PORT;
   }
 
   // // if the above "if" case isn't met, set port = to the shell env var
-  // port = process.env.NODE_CONFIG_APP_PORT || 3000;
+  // port = NODE_CONFIG_APP_PORT || 3000;
 
   // return port, so we can use it wherever this function is called
   return port;
@@ -37,8 +39,8 @@ function configureEmail() {
   let email;
   // if email is undefined,
   if (
-    process.env.NODE_CONFIG_APP_EMAIL === undefined ||
-    process.env.NODE_CONFIG_APP_PORT === "EXPRESS-SERVER-PORT"
+    NODE_CONFIG_APP_EMAIL === undefined ||
+    NODE_CONFIG_APP_EMAIL === "NODE_CONFIG_APP_EMAIL"
   ) {
     // run a function that will run inquirer prompt,
     // asking user for email etc.
@@ -47,7 +49,7 @@ function configureEmail() {
   }
 
   // if condition not met, same as configurePort
-  email = process.env.NODE_CONFIG_APP_EMAIL;
+  email = NODE_CONFIG_APP_EMAIL;
 
   return email;
 }
