@@ -1,15 +1,16 @@
 const { port: userPort } = require("./default");
+const { askFor } = require("../src/inquirer/ask");
 
 const { NODE_CONFIG_APP_PORT, NODE_CONFIG_APP_EMAIL } = process.env;
 
 function configureEnv() {
   const port = configurePort();
-  const email = configureEmail();
-
-  return {
-    port,
-    email,
-  };
+  configureEmail().then(function (email) {
+    return {
+      port,
+      email,
+    };
+  });
 }
 //test new branch
 function configurePort() {
@@ -44,21 +45,22 @@ function configureEmail() {
   ) {
     // run a function that will run inquirer prompt,
     // asking user for email etc.
-    // right now its just a mock, see below.
-    email = promptForEmail();
+    askFor("email").then((result) => {
+      console.log(result);
+    });
+  } else {
+    // if condition not met, same as configurePort
+    email = NODE_CONFIG_APP_EMAIL;
   }
-
-  // if condition not met, same as configurePort
-  email = NODE_CONFIG_APP_EMAIL;
 
   return email;
 }
 
 // this is just so we dont have to worry about inquirer functionality  yet
-function promptForEmail() {
-  console.log("promptForEmail invoked");
-  return;
-}
+// function promptForEmail() {
+//   console.log("promptForEmail invoked");
+//   return;
+// }
 
 module.exports = {
   configureEnv,
