@@ -1,17 +1,15 @@
-require("dotenv").config({ path: `.env.${process.env.NODE_ENV}` }); //console.log(process.env);
+require("dotenv").config();
+
+/*
+  this is not as verbose as doing it in 2 lines... but only gets called
+  once, and really shouldn't be changed by anyone but us anyway:
+*/
+const { port, email } = require("./config/configureEnv").configureEnv();
 
 const express = require("express");
 const app = express();
-const { configureEnv } = require("./config/configureEnv");
 
-console.log(process.env);
-
-//in the vscode terminal run : NODE_ENV=production node index.js
-//or NODE_ENV=development node index.js, to get the data
-//corresponding to the node environment set
-
-const { port, email } = configureEnv();
-
+// what is this? documentation :D
 app.get("/env-vars", (req, res) => {
   res.json({
     port,
