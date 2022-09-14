@@ -1,8 +1,6 @@
 /* eslint-disable no-undef */
 const { port: userPort } = require("./default");
 
-const inquirer = require("inquirer");
-
 function configureEnv() {
   const port = configurePort();
   const email = configureEmail();
