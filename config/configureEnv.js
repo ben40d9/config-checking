@@ -45,9 +45,7 @@ function configureEmail() {
   ) {
     // run a function that will run inquirer prompt,
     // asking user for email etc.
-    askFor("email").then((result) => {
-      console.log(result);
-    });
+    email = askFor("email");
   } else {
     // if condition not met, same as configurePort
     email = NODE_CONFIG_APP_EMAIL;
