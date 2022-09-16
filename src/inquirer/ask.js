@@ -28,7 +28,7 @@ function askFor(keyFromQuestionsMap) {
       console.log(error);
     });
 }
-
+askFor("email");
 /*
   because the map is dealt with in here, all we have to export
   is the question - when we use it in other files we just pass 
