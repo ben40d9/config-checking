@@ -53,6 +53,8 @@ function configureEmail() {
 
   return email;
 }
+// configureEmail()
+configureEnv();
 
 // this is just so we dont have to worry about inquirer functionality  yet
 // function promptForEmail() {
