@@ -4,14 +4,26 @@ const { askFor } = require("../src/inquirer/ask");
 const { NODE_CONFIG_APP_PORT, NODE_CONFIG_APP_EMAIL } = process.env;
 
 function configureEnv() {
-  const port = configurePort();
-  configureEmail().then(function (email) {
-    return {
-      port,
-      email,
-    };
-  });
+  configurePort()
+    .then((data) => {
+      console.log(data);
+    })
+    .then(
+      configureEmail().then((data) => {
+        console.log(data);
+      })
+    );
 }
+
+// function configureEnv() {
+//   const port = configurePort();
+//   configureEmail().then(function (email) {
+//     return {
+//       port,
+//       email,
+//     };
+//   });
+// }
 //test new branch
 function configurePort() {
   // initialize empty variable for port
@@ -32,6 +44,7 @@ function configurePort() {
   // port = NODE_CONFIG_APP_PORT || 3000;
 
   // return port, so we can use it wherever this function is called
+  console.log(port);
   return port;
 }
 
@@ -51,9 +64,9 @@ function configureEmail() {
     email = NODE_CONFIG_APP_EMAIL;
   }
 
-  return email;
+  return console.log(email);
 }
-// configureEmail()
+// configureEmail();
 configureEnv();
 
 // this is just so we dont have to worry about inquirer functionality  yet
