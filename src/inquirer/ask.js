@@ -29,7 +29,7 @@ function askFor(keyFromQuestionsMap) {
     });
 }
 
-askFor("username", "email");
+askFor("email");
 // askFor("email").then(askFor("username"));
 
 /*
