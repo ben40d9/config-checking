@@ -7,7 +7,8 @@ module.exports = {
   extends: "eslint:recommended",
   overrides: [],
   parserOptions: {
-    ecmaVersion: "latest",
+    ecmaVersion: "2022",
+    sourceType: "script",
   },
   rules: {},
 };

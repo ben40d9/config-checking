@@ -13,6 +13,4 @@ const usernameQuestion = {
   },
 };
 
-module.exports = {
-  usernameQuestion,
-};
+export { usernameQuestion };
