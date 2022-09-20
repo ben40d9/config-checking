@@ -1,6 +1,6 @@
-import { port as userPort} from ("./default");
+import { port as userPort } from "./default";
 
-import  askFor from "../src/inquirer/ask";
+import askFor from "../src/inquirer/ask";
 
 const { NODE_CONFIG_APP_PORT, NODE_CONFIG_APP_EMAIL } = process.env;
 
@@ -13,9 +13,9 @@ const configureEnv = async () => {
   const email = await configureEmail();
   return {
     port,
-    email
-  }
-}
+    email,
+  };
+};
 
 function configurePort() {
   let port;
@@ -33,18 +33,17 @@ function configurePort() {
 
 const configureEmail = async () => {
   let email;
-  try{
-    if(isAskEmailDisabled) {
-      email = NODE_CONFIG_APP_EMAIL
-      return email
+  try {
+    if (isAskEmailDisabled) {
+      email = NODE_CONFIG_APP_EMAIL;
+      return email;
     }
     const answer = await askFor("email");
     return answer;
-  } catch (err){
-    console.log(err, "error during user email configuration")
+  } catch (err) {
+    console.log(err, "error during user email configuration");
   }
-}
-
-export {
-  configureEnv
 };
+configureEnv();
+
+export { configureEnv };
