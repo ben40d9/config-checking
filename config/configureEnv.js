@@ -44,6 +44,5 @@ const configureEmail = async () => {
     console.log(err, "error during user email configuration");
   }
 };
-configureEnv();
 
-export { configureEnv };
+export default configureEnv;
