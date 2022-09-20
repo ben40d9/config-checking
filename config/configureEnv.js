@@ -28,6 +28,7 @@ function configurePort() {
   } else {
     port = NODE_CONFIG_APP_PORT;
   }
+  process.env.NODE_CONFIG_APP_PORT = port;
   return port;
 }
 
@@ -38,8 +39,9 @@ const configureEmail = async () => {
       email = NODE_CONFIG_APP_EMAIL;
       return email;
     }
-    const answer = await askFor("email");
-    return answer;
+    const { email } = await askFor("email");
+    process.env.NODE_CONFIG_APP_EMAIL = email;
+    return email;
   } catch (err) {
     console.log(err, "error during user email configuration");
   }
