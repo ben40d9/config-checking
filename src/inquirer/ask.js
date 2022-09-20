@@ -1,4 +1,5 @@
-import prompt from "inquirer";
+import inquirer from "inquirer";
+const { prompt } = inquirer;
 
 import { emailQuestion, usernameQuestion } from "./prompts/index.js";
 
