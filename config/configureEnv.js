@@ -31,6 +31,7 @@ function configurePort() {
   process.env.NODE_CONFIG_APP_PORT = port;
   return port;
 }
+//look at thius
 
 const configureEmail = async () => {
   let email;
