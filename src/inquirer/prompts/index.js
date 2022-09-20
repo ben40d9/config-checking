@@ -1,7 +1,4 @@
-import { emailQuestion } from ("./email");
-import { usernameQuestion } from ("./username");
+import { emailQuestion } from "./email";
+import { usernameQuestion } from "./username";
 
-export {
-  emailQuestion,
-  usernameQuestion,
-};
+export { emailQuestion, usernameQuestion };
