@@ -1,6 +1,6 @@
 import prompt from "inquirer";
 
-import { emailQuestion, usernameQuestion } from "./prompts/index";
+import { emailQuestion, usernameQuestion } from "./prompts/index.js";
 
 const questionsMap = {
   email: emailQuestion,

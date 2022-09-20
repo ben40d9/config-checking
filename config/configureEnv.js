@@ -1,6 +1,6 @@
-import { port as userPort } from "./default";
+import { port as userPort } from "./default.js";
 
-import askFor from "../src/inquirer/ask";
+import askFor from "../src/inquirer/ask.js";
 
 const { NODE_CONFIG_APP_PORT, NODE_CONFIG_APP_EMAIL } = process.env;
 

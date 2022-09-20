@@ -13,4 +13,4 @@ const usernameQuestion = {
   },
 };
 
-export default usernameQuestion;
+export { usernameQuestion };

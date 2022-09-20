@@ -1,4 +1,4 @@
-import { emailQuestion } from "./email";
-import { usernameQuestion } from "./username";
+import { emailQuestion } from "./email.js";
+import { usernameQuestion } from "./username.js";
 
 export { emailQuestion, usernameQuestion };

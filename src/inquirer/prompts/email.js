@@ -15,4 +15,4 @@ const emailQuestion = {
   },
 };
 
-export default emailQuestion;
+export { emailQuestion };
