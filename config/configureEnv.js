@@ -40,8 +40,9 @@ const configureEmail = async () => {
       return email;
     }
     const answer = await askFor("email");
+    email = answer.email;
     process.env.NODE_CONFIG_APP_EMAIL = answer.email;
-    return answer.email;
+    return email;
   } catch (err) {
     console.log(err, "error during user email configuration");
   }
