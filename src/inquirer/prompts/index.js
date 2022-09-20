@@ -1,7 +1,7 @@
-const { emailQuestion } = require("./email");
-const { usernameQuestion } = require("./username");
+import { emailQuestion } from ("./email");
+import { usernameQuestion } from ("./username");
 
-module.exports = {
+export {
   emailQuestion,
   usernameQuestion,
 };

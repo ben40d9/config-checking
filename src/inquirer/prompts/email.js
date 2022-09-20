@@ -15,6 +15,4 @@ const emailQuestion = {
   },
 };
 
-module.exports = {
-  emailQuestion,
-};
+export default emailQuestion;
