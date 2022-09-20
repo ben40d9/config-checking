@@ -12,7 +12,7 @@ const askFor = async (keyFromQuestionsMap) => {
   const activeQuestion = questionsMap[keyFromQuestionsMap];
   try {
     const answer = await prompt([activeQuestion]);
-    return { answer };
+    return answer;
   } catch (err) {
     console.log(err);
   }
