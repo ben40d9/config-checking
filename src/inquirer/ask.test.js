@@ -13,7 +13,5 @@ describe("ask function", () => {
     askFor(questionKey).then((result) => {
       console.log(result);
     });
-
-    // 3.
   });
 });
