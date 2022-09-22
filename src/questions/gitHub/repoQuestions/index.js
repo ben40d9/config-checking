@@ -15,12 +15,19 @@ const configRepo = "config-checking";
 // console.log(myRepo);
 
 //just another test to get a specific files' contents
-const repoContents = await octokit.request(
-  "GET /repos/{owner}/{repo}/contents/{path}",
-  {
-    owner: `${process.env.GH_OWNER}`,
-    repo: configRepo,
-    path: "index.js",
-  }
-);
-console.log(repoContents.data);
+// const repoContents = await octokit.request(
+//   "GET /repos/{owner}/{repo}/contents/{path}",
+//   {
+//     owner: `${process.env.GH_OWNER}`,
+//     repo: configRepo,
+//     path: "index.js",
+//   }
+// );
+// console.log(repoContents.data);
+
+//this will list all of the public repositories for the
+//specified user
+const listReposOfUser = await octokit.request("GET /users/{username}/repos", {
+  username: `${process.env.GH_OWNER}`,
+});
+console.log(listReposOfUser);
