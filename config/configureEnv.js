@@ -47,5 +47,6 @@ const configureEmail = async () => {
     console.log(err, "error during user email configuration");
   }
 };
+//publish new branch
 
 export default configureEnv;
