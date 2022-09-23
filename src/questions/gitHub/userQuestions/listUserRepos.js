@@ -7,3 +7,5 @@ const listReposOfUser = await octokit.request("GET /users/{username}/repos", {
 });
 
 console.log(listReposOfUser);
+
+export { listReposOfUser };
