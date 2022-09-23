@@ -1,7 +1,8 @@
 import { Octokit, App } from "octokit";
 
 const octokit = new Octokit({
-  auth: "YOUR-TOKEN",
+  auth: `${process.env.GH_TOKEN}`,
 });
 
-await octokit.request("GET /octocat", {});
+const what = await octokit.request("GET /octocat", {});
+console.log(what);
