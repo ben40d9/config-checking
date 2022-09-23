@@ -53,6 +53,8 @@ const configureGitHubQuestion = async () => {
   const { selectedPath } = await askFor("github");
   return selectedPath;
 };
+//want to keep below function syntax b/c may use when i refactor function
+//to send dif inq questions based on their returned answer from configureGitHubQuestion
 
 // const configureGitHubQuestion = async () => {
 //   const { selectedPath } = await askFor("github");
