@@ -1,9 +1,4 @@
-import { Octokit, App } from "octokit";
+import { getUserInfo } from "./getUser";
+import { listReposOfUser } from "./listUserRepos";
 
-const octokit = new Octokit({
-  auth: `${process.env.GH_TOKEN}`,
-});
-
-const test = await octokit.request("GET /user", {});
-
-console.log(test);
+export { getUserInfo, listReposOfUser };
