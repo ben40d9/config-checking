@@ -10,9 +10,11 @@ const isAskEmailDisabled =
 
 const configureEnv = async () => {
   const port = await configurePort();
+  const github = await configureGitHubQuestion();
   const email = await configureEmail();
   return {
     port,
+    github,
     email,
   };
 };
@@ -48,31 +50,32 @@ const configureEmail = async () => {
 };
 
 const configureGitHubQuestion = async () => {
-  let selectedPath;
-  try {
-    if (answer === "Get User Information") {
-      selectedPath = "one";
-      console.log(selectedPath);
-      return selectedPath;
-    }
-    if (answer === "List Repos That User Owns") {
-      selectedPath = "two";
-      console.log(selectedPath);
-      return selectedPath;
-    }
-    if (answer === "Get Repo Information") {
-      selectedPath = "three";
-      console.log(selectedPath);
-      return selectedPath;
-    }
-    if (answer === "Get All Contributors On Repo") {
-      selectedPath = "four";
-      console.log(selectedPath);
-      return selectedPath;
-    }
-  } catch (err) {
-    console.log(err, "an err has occurred");
-  }
+  const { selectedPath } = await askFor("github");
+  return selectedPath;
 };
+
+// const configureGitHubQuestion = async () => {
+//   const { selectedPath } = await askFor("github");
+//   try {
+//     if (selectedPath === "Get User Information") {
+//       console.log(selectedPath);
+//       return selectedPath;
+//     }
+//     if (selectedPath === "List Repos That User Owns") {
+//       console.log(selectedPath);
+//       return selectedPath;
+//     }
+//     if (selectedPath === "Get Repo Information") {
+//       console.log(selectedPath);
+//       return selectedPath;
+//     }
+//     if (selectedPath === "Get All Contributors On Repo") {
+//       console.log(selectedPath);
+//       return selectedPath;
+//     }
+//   } catch (err) {
+//     console.log(err, "an err has occurred");
+//   }
+// };
 
 export default configureEnv;
