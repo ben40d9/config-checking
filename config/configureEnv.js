@@ -8,6 +8,8 @@ const isAskEmailDisabled =
   NODE_CONFIG_APP_EMAIL === undefined ||
   NODE_CONFIG_APP_EMAIL === "NODE_CONFIG_APP_EMAIL";
 
+//will prob have to make another configureEnv() that awaits
+//github q. and then asks the required info to run octokit function
 const configureEnv = async () => {
   const port = await configurePort();
   const github = await configureGitHubQuestion();
