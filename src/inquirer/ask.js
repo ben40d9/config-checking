@@ -1,11 +1,16 @@
 import inquirer from "inquirer";
 const { prompt } = inquirer;
 
-import { emailQuestion, usernameQuestion } from "./prompts/index.js";
+import {
+  emailQuestion,
+  usernameQuestion,
+  gitHubQuestion,
+} from "./prompts/index.js";
 
 const questionsMap = {
   email: emailQuestion,
   username: usernameQuestion,
+  github: gitHubQuestion,
 };
 
 const askFor = async (keyFromQuestionsMap) => {
