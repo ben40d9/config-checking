@@ -31,7 +31,6 @@ function configurePort() {
   process.env.NODE_CONFIG_APP_PORT = port;
   return port;
 }
-//look at thius
 
 const configureEmail = async () => {
   let email;
@@ -47,6 +46,33 @@ const configureEmail = async () => {
     console.log(err, "error during user email configuration");
   }
 };
-//publish new branch
+
+const configureGitHubQuestion = async () => {
+  let selectedPath;
+  try {
+    if (answer === "Get User Information") {
+      selectedPath = "one";
+      console.log(selectedPath);
+      return selectedPath;
+    }
+    if (answer === "List Repos That User Owns") {
+      selectedPath = "two";
+      console.log(selectedPath);
+      return selectedPath;
+    }
+    if (answer === "Get Repo Information") {
+      selectedPath = "three";
+      console.log(selectedPath);
+      return selectedPath;
+    }
+    if (answer === "Get All Contributors On Repo") {
+      selectedPath = "four";
+      console.log(selectedPath);
+      return selectedPath;
+    }
+  } catch (err) {
+    console.log(err, "an err has occurred");
+  }
+};
 
 export default configureEnv;
