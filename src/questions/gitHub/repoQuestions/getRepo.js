@@ -6,7 +6,7 @@ import { configRepo } from "./index.js";
 //repo owner & repo name is required
 const repoObj = await octokit.request("GET /repos/{owner}/{repo}", {
   owner: `${process.env.GH_OWNER}`,
-  repo: `${configRepo}`,
+  repo: configRepo,
 });
 
 //var that only gets repo data portion of obj

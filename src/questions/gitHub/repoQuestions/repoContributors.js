@@ -7,7 +7,7 @@ const contributorsOfRepo = await octokit.request(
   "GET /repos/{owner}/{repo}/contributors",
   {
     owner: `${process.env.GH_OWNER}`,
-    repo: `${configRepo}`,
+    repo: configRepo,
   }
 );
 
