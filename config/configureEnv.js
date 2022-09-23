@@ -2,11 +2,13 @@ import { port as userPort } from "./default.js";
 
 import askFor from "../src/inquirer/ask.js";
 
-const { NODE_CONFIG_APP_PORT, NODE_CONFIG_APP_EMAIL } = process.env;
+const { NODE_CONFIG_APP_PORT, NODE_CONFIG_APP_EMAIL, GH_OWNER } = process.env;
 
 const isAskEmailDisabled =
   NODE_CONFIG_APP_EMAIL === undefined ||
   NODE_CONFIG_APP_EMAIL === "NODE_CONFIG_APP_EMAIL";
+
+const isAskUsernameDisabled = GH_OWNER === undefined || GH_OWNER === "GH_OWNER";
 
 //will prob have to make another configureEnv() that awaits
 //github q. and then asks the required info to run octokit function
@@ -21,6 +23,7 @@ const configureEnv = async () => {
   };
 };
 
+//configure port
 function configurePort() {
   let port;
 
@@ -36,6 +39,7 @@ function configurePort() {
   return port;
 }
 
+//configure email
 const configureEmail = async () => {
   let email;
   try {
@@ -51,10 +55,30 @@ const configureEmail = async () => {
   }
 };
 
+//configure github username
+//at some point need to check the val of this vs function
+//we made to check if un us valid on gh
+const configureUsername = async () => {
+  let owner;
+  try {
+    if (isAskUsernameDisabled) {
+      owner = GH_OWNER;
+      return owner;
+    }
+    const { owner } = await askFor("username");
+    process.env.GH_OWNER = owner;
+    return owner;
+  } catch (err) {
+    console.log(err, "error during username configuration");
+  }
+};
+
+//configure q that asks what data user wants from github
 const configureGitHubQuestion = async () => {
   const { selectedPath } = await askFor("github");
   return selectedPath;
 };
+
 //want to keep below function syntax b/c may use when i refactor function
 //to send dif inq questions based on their returned answer from configureGitHubQuestion
 
