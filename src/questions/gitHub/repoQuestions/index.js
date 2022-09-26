@@ -3,8 +3,8 @@
 const configRepo = "config-checking";
 
 //import all functions here so its easier to call throughout app
-import { contributors } from "./repoContributors";
-import { getRepo } from "./getRepo";
-import { repoContents } from "./fileFromRepo";
+// import { contributors } from "./repoContributors.js";
+// import { getRepo } from "./getRepo.js";
+// import { repoContents } from "./fileFromRepo.js";
 
-export { configRepo, contributors, getRepo, repoContents };
+export { configRepo };
