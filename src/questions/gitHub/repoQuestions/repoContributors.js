@@ -13,8 +13,9 @@ const contributorsOfRepo = await octokit.request(
 
 //var that only gets contributors data (what we want)
 const contributors = contributorsOfRepo.data;
-
 console.log(contributors);
+
+export { contributors };
 
 //can make a function to get contributors of
 //given repo, and sort in an ordered list by
