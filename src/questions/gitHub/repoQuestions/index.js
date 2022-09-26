@@ -2,4 +2,9 @@
 //in .env b/c they arent private info, just repo names
 const configRepo = "config-checking";
 
-export { configRepo };
+//import all functions here so its easier to call throughout app
+import { contributors } from "./repoContributors";
+import { getRepo } from "./getRepo";
+import { repoContents } from "./fileFromRepo";
+
+export { configRepo, contributors, getRepo, repoContents };
