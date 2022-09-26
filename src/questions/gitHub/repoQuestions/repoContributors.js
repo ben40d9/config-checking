@@ -7,13 +7,13 @@ const contributorsOfRepo = await octokit.request(
   "GET /repos/{owner}/{repo}/contributors",
   {
     owner: `${process.env.GH_OWNER}`,
-    repo: configRepo,
+    repo: `${configRepo}`,
   }
 );
 
 //var that only gets contributors data (what we want)
 const contributors = contributorsOfRepo.data;
-console.log(contributors);
+// console.log(contributors);
 
 export { contributors };
 
