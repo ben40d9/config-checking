@@ -12,4 +12,5 @@ const allRepoContents = await octokit.request(
 );
 
 const repoContents = allRepoContents.data;
-console.log(repoContents);
+// console.log(repoContents);
+export { repoContents };
