@@ -11,7 +11,6 @@ const repoObj = await octokit.request("GET /repos/{owner}/{repo}", {
 
 //var that only gets repo data portion of obj
 const getRepo = repoObj;
+// console.log(getRepo);
 
-console.log(getRepo);
-
-export { getRepo };
+// export { getRepo };
