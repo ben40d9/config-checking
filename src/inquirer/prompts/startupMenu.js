@@ -1,5 +1,5 @@
 //will switch base question to "what will you be getting info on repos || users"
-const startUpQuestion = {
+const startupQuestion = {
   type: "list",
   name: "startUp",
   message: "What would you like to do?",
@@ -15,4 +15,4 @@ const startUpQuestion = {
   },
 };
 
-export { startUpQuestion };
+export { startupQuestion };
