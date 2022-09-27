@@ -8,6 +8,7 @@ import {
   tokenQuestion,
   startupQuestion,
   repoNameQuestion,
+  whatPathQuestion,
 } from "./prompts/index.js";
 
 const questionsMap = {
@@ -17,6 +18,7 @@ const questionsMap = {
   token: tokenQuestion,
   startup: startupQuestion,
   repo: repoNameQuestion,
+  path: whatPathQuestion,
 };
 
 const askFor = async (keyFromQuestionsMap) => {
