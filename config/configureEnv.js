@@ -12,14 +12,12 @@ const isAskUsernameDisabled = GH_OWNER === undefined || GH_OWNER === "GH_OWNER";
 
 //will prob have to make another configureEnv() that awaits
 //github q. and then asks the required info to run octokit function
-const configureEnv = async () => {
-  const port = await configurePort();
-  const github = await configureGitHubQuestion();
-  const email = await configureEmail();
+export const configureEnv = async () => {
+  // const port = configurePort();
+  const token = await configureToken();
   return {
     port,
-    github,
-    email,
+    token,
   };
 };
 
@@ -38,6 +36,24 @@ function configurePort() {
   process.env.NODE_CONFIG_APP_PORT = port;
   return port;
 }
+
+//configure token
+const configureToken = async () => {
+  let token;
+  try {
+    if (process.env.GH_TOKEN !== "") {
+      // or default token val
+      token = process.env.GH_TOKEN;
+      return token;
+    }
+    // TODO: write this fcn
+    // const { token } = await askFor("token");
+    process.env.GH_TOKEN = token;
+    return token;
+  } catch (err) {
+    console.log(err, "error during user token configuration");
+  }
+};
 
 //configure email
 const configureEmail = async () => {
@@ -73,12 +89,6 @@ const configureUsername = async () => {
   }
 };
 
-//configure q that asks what data user wants from github
-const configureGitHubQuestion = async () => {
-  const { selectedPath } = await askFor("github");
-  return selectedPath;
-};
-
 //want to keep below function syntax b/c may use when i refactor function
 //to send dif inq questions based on their returned answer from configureGitHubQuestion
 
@@ -106,4 +116,13 @@ const configureGitHubQuestion = async () => {
 //   }
 // };
 
-export default configureEnv;
+export const isCriticalAppDataLoaded = (env) => {
+  /*   token should go here as well */
+  const criticalEnvVariables = ["PORT"];
+
+  if (!criticalEnvVariables.every((envVar) => env[envVar])) {
+    throw new Error(
+      "You are missing a critical environment variable. Please try restarting the app again."
+    );
+  }
+};

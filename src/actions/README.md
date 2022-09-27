@@ -1,0 +1,1 @@
+Actions should just wrap one "task". **We run an action when there are no more conditions we need to ask the user about before we do the thing.** Like calling github for repo content: an action file for that would just receive, ready to go, the data needed for that request - make the request, handle any failure cases, and return whatever the flow calls for.
