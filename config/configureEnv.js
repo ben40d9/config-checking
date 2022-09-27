@@ -2,14 +2,7 @@ import { port as userPort } from "./default.js";
 
 import askFor from "../src/inquirer/ask.js";
 
-const { NODE_CONFIG_APP_PORT, NODE_CONFIG_APP_EMAIL, GH_OWNER, GH_TOKEN } =
-  process.env;
-
-const isAskEmailDisabled =
-  NODE_CONFIG_APP_EMAIL === undefined ||
-  NODE_CONFIG_APP_EMAIL === "NODE_CONFIG_APP_EMAIL";
-
-const isAskUsernameDisabled = GH_OWNER === undefined || GH_OWNER === "GH_OWNER";
+const { NODE_CONFIG_APP_PORT, GH_TOKEN } = process.env;
 
 const isTokenDisabled = GH_TOKEN === undefined || GH_TOKEN === "GH_TOKEN";
 
@@ -53,40 +46,6 @@ const configureToken = async () => {
     return token;
   } catch (err) {
     console.log(err, "error during user token configuration");
-  }
-};
-
-//configure email
-const configureEmail = async () => {
-  let email;
-  try {
-    if (isAskEmailDisabled) {
-      email = NODE_CONFIG_APP_EMAIL;
-      return email;
-    }
-    const { email } = await askFor("email");
-    process.env.NODE_CONFIG_APP_EMAIL = email;
-    return email;
-  } catch (err) {
-    console.log(err, "error during user email configuration");
-  }
-};
-
-//configure github username
-//at some point need to check the val of this vs function
-//we made to check if un us valid on gh
-const configureUsername = async () => {
-  let owner;
-  try {
-    if (isAskUsernameDisabled) {
-      owner = GH_OWNER;
-      return owner;
-    }
-    const { owner } = await askFor("username");
-    process.env.GH_OWNER = owner;
-    return owner;
-  } catch (err) {
-    console.log(err, "error during username configuration");
   }
 };
 
