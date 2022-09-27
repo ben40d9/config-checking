@@ -120,13 +120,25 @@ const configureUsername = async () => {
 //should just change this function to be looking in .env and
 //checking IF process.env.includes PORT && TOKEN, but IF NOT
 //THEN throw new Error.
-export const isCriticalAppDataLoaded = (env) => {
-  /*   token should go here as well */
-  const criticalEnvVariables = ["PORT"];
-
-  if (!criticalEnvVariables.every((envVar) => env[envVar])) {
+export const isCriticalAppDataLoaded = async () => {
+  if (process.env.NODE_CONFIG_APP_PORT && process.env.GH_TOKEN === undefined) {
     throw new Error(
       "You are missing a critical environment variable. Please try restarting the app again."
     );
+  } else {
+    //just using this log as a test rn to see the function run before
+    //launching the startup menu
+    return console.log(process.env.NODE_CONFIG_APP_PORT, process.env.GH_TOKEN);
   }
 };
+
+// export const isCriticalAppDataLoaded = (env) => {
+//   /*   token should go here as well */
+//   const criticalEnvVariables = ["PORT"];
+
+//   if (!criticalEnvVariables.every((envVar) => env[envVar])) {
+//     throw new Error(
+//       "You are missing a critical environment variable. Please try restarting the app again."
+//     );
+//   }
+// };
