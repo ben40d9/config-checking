@@ -2,7 +2,8 @@ import { port as userPort } from "./default.js";
 
 import askFor from "../src/inquirer/ask.js";
 
-const { NODE_CONFIG_APP_PORT, NODE_CONFIG_APP_EMAIL, GH_OWNER } = process.env;
+const { NODE_CONFIG_APP_PORT, NODE_CONFIG_APP_EMAIL, GH_OWNER, GH_TOKEN } =
+  process.env;
 
 const isAskEmailDisabled =
   NODE_CONFIG_APP_EMAIL === undefined ||
@@ -10,10 +11,12 @@ const isAskEmailDisabled =
 
 const isAskUsernameDisabled = GH_OWNER === undefined || GH_OWNER === "GH_OWNER";
 
+const isTokenDisabled = GH_TOKEN === undefined || GH_TOKEN === "GH_TOKEN";
+
 //will prob have to make another configureEnv() that awaits
 //github q. and then asks the required info to run octokit function
 export const configureEnv = async () => {
-  // const port = configurePort();
+  const port = configurePort();
   const token = await configureToken();
   return {
     port,
@@ -41,13 +44,11 @@ function configurePort() {
 const configureToken = async () => {
   let token;
   try {
-    if (process.env.GH_TOKEN !== "") {
-      // or default token val
+    if (isTokenDisabled) {
       token = process.env.GH_TOKEN;
       return token;
     }
-    // TODO: write this fcn
-    // const { token } = await askFor("token");
+    const { token } = await askFor("token");
     process.env.GH_TOKEN = token;
     return token;
   } catch (err) {
@@ -116,6 +117,9 @@ const configureUsername = async () => {
 //   }
 // };
 
+//should just change this function to be looking in .env and
+//checking IF process.env.includes PORT && TOKEN, but IF NOT
+//THEN throw new Error.
 export const isCriticalAppDataLoaded = (env) => {
   /*   token should go here as well */
   const criticalEnvVariables = ["PORT"];
