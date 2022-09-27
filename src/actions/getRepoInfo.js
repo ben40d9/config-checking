@@ -26,11 +26,6 @@ export const infoFlow = async () => {
   });
 
   console.log(allRepoInfo);
-
-  return {
-    owner,
-    repo,
-  };
 };
 infoFlow();
 
