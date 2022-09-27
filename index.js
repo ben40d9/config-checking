@@ -3,12 +3,13 @@ import {
   isCriticalAppDataLoaded,
 } from "./config/configureEnv.js";
 
-import { launchStartupMenu } from "./src/flows/launchStartupMenu.js";
+import { launchStartupMenu, nextStep } from "./src/flows/launchStartupMenu.js";
 
 import * as dotenv from "dotenv";
 dotenv.config();
 
 (async () => {
   await configureEnv();
-  isCriticalAppDataLoaded() && launchStartupMenu();
+  isCriticalAppDataLoaded() && nextStep();
+  // await nextStep();
 })(); // <--- note that this runs it
