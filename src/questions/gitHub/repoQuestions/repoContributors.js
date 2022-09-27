@@ -1,4 +1,4 @@
-import { octokit } from "../index.js";
+import { octokit } from "../../../actions/octokit.js";
 import { configRepo } from "./index.js";
 
 //gets entire obj returned from contributors of given repo
