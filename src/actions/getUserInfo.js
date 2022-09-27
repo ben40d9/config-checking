@@ -18,4 +18,3 @@ export const userInfoFlow = async () => {
   //     return console.log("User does not exist ");
   //   }
 };
-userInfoFlow();

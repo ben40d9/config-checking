@@ -4,13 +4,10 @@ import { octokit } from "./octokit.js";
 
 export const repoContentFlow = async () => {
   const owner = await askFor("username");
-  console.log(owner);
 
   const repo = await askFor("repo");
-  console.log(repo);
 
   const path = await askFor("path");
-  console.log(path);
 
   //function to get a specific files' contents
   const allRepoContents = await octokit.request(
@@ -31,4 +28,3 @@ export const repoContentFlow = async () => {
   let data = buff.toString();
   console.log(data);
 };
-repoContentFlow();

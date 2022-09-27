@@ -19,4 +19,3 @@ export const infoFlow = async () => {
 
   console.log(allRepoInfo.data);
 };
-infoFlow();
