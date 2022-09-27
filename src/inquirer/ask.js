@@ -5,12 +5,14 @@ import {
   emailQuestion,
   usernameQuestion,
   gitHubQuestion,
+  tokenQuestion,
 } from "./prompts/index.js";
 
 const questionsMap = {
   email: emailQuestion,
   username: usernameQuestion,
   github: gitHubQuestion,
+  token: tokenQuestion,
 };
 
 const askFor = async (keyFromQuestionsMap) => {
