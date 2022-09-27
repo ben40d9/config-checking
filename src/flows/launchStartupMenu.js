@@ -17,28 +17,22 @@ export const launchStartupMenu = async () => {
 //this function works,
 export const nextStep = async () => {
   const wait = await launchStartupMenu();
-  console.log(wait);
-  // let theWay;
+
   if (wait.startUp === "Get User Information") {
-    //did this one
     userInfoFlow();
   }
   if (wait.startUp === "Clone a Repo") {
-    //run whatever you need
+    //incomplete
     return "You will next clone a repo! Code coming soon!";
   }
   if (wait.startUp === "Get Repo Information") {
-    //did this one
     infoFlow();
   }
   if (wait.startUp === "Get a Repos Content") {
-    //did this one
     repoContentFlow();
   }
   if (wait.startUp === "Practice Questions") {
-    //run whatever you need
+    //incomplete
     return "You will ppractice code! Code coming soon!";
   }
 };
-
-// nextStep();
