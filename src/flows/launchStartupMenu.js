@@ -4,32 +4,41 @@
 
 import askFor from "../inquirer/ask.js";
 
+import { infoFlow } from "../actions/getRepoInfo.js";
+
 export const launchStartupMenu = async () => {
   const menuOfQuestions = await askFor("startup");
   return menuOfQuestions;
-  //   const whatsNext = () => {
-  //     if (menuOfQuestions === "Get User Information") {
-  //       //run whatever you need
-  //       return "u will get info";
-  //     }
-  //     if (menuOfQuestions === "Clone a Repo") {
-  //       //run whatever you need
-  //       return "u will get info";
-  //     }
-  //     if (menuOfQuestions === "Get Repo Information") {
-  //       const thism = infoFlow();
-  //       return thism;
-  //     }
-  //     if (menuOfQuestions === "Get a Repos Content") {
-  //       //run
-  //       return "u will get info";
-  //     }
-  //     if (menuOfQuestions === "Practice Questions") {
-  //       //run whatever you need
-  //       return "u will get info";
-  //     } else {
-  //       return "you messed up";
-  //     }
-  //   };
-  //   const nextStep = await whatsNext();
 };
+
+//just a mock of what will happen depending on what is chosen in
+export const nextStep = async () => {
+  const wait = await launchStartupMenu();
+  let theWay;
+  if (wait.startUp === "Get User Information") {
+    //run whatever you need
+    theWay = "u will get info";
+    return theWay;
+  }
+  if (wait.startUp === "Clone a Repo") {
+    //run whatever you need
+    theWay = "u will get info";
+    return theWay;
+  }
+  if (wait.startUp === "Get Repo Information") {
+    return infoFlow();
+  }
+  if (wait.startUp === "Get a Repos Content") {
+    //run
+    theWay = "u will get info";
+    return theWay;
+  }
+  if (wait.startUp === "Practice Questions") {
+    //run whatever you need
+    theWay = "u will get info";
+    return theWay;
+  }
+  return theWay;
+};
+
+nextStep();

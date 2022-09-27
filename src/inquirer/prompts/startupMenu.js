@@ -11,7 +11,7 @@ const startupQuestion = {
     "Practice Questions",
   ],
   filter(val) {
-    return val.toLowerCase();
+    return val;
   },
 };
 
