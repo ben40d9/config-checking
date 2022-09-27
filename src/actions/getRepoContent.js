@@ -1,21 +1,24 @@
 //will get contents, setting up after get info is done
-import askFor from "../inquirer/ask";
-import { octokit } from "./octokit";
+import askFor from "../inquirer/ask.js";
+import { octokit } from "./octokit.js";
 
 export const repoContentFlow = async () => {
-  const owner = askFor("username");
+  const owner = await askFor("username");
+  console.log(owner);
 
-  const repo = askFor("repo");
+  const repo = await askFor("repo");
+  console.log(repo);
 
-  const path = "";
+  const path = await askFor("path");
+  console.log(path);
 
   //function to get a specific files' contents
   const allRepoContents = await octokit.request(
     "GET /repos/{owner}/{repo}/contents/{path}",
     {
-      owner: `${process.env.GH_OWNER}`,
-      repo: `${configRepo}`,
-      path: "index.js",
+      owner: `${owner.ghUsername}`,
+      repo: `${repo.ghRepoName}`,
+      path: `${path.filePath}`,
     }
   );
 
@@ -28,3 +31,4 @@ export const repoContentFlow = async () => {
   let data = buff.toString();
   console.log(data);
 };
+repoContentFlow();
