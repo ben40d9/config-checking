@@ -6,6 +6,7 @@ import askFor from "../inquirer/ask.js";
 
 // import { infoFlow } from "../actions/getRepoInfo.js";
 // import { repoContentFlow } from "../actions/getRepoContent.js";
+// import { userInfoFlow } from "../actions/getUserInfo.js";
 
 export const launchStartupMenu = async () => {
   const menuOfQuestions = await askFor("startup");
@@ -17,8 +18,8 @@ export const launchStartupMenu = async () => {
 //   const wait = await launchStartupMenu();
 //   let theWay;
 //   if (wait.startUp === "Get User Information") {
-//     //run whatever you need
-//     theWay = "You will get user info! Code coming soon!";
+//     //did this one
+//     theWay = userInfoFlow();
 //     return theWay;
 //   }
 //   if (wait.startUp === "Clone a Repo") {
