@@ -18,21 +18,33 @@ export const launchStartupMenu = async () => {
 export const nextStep = async () => {
   const wait = await launchStartupMenu();
 
-  if (wait.startUp === "Get User Information") {
-    userInfoFlow();
+  // TODO: move this logic into a switch case
+  switch (wait.startUp) {
+    case "Get User Information": {
+      userInfoFlow();
+      break;
+    }
+
+    default: {
+      console.log("default");
+    }
   }
-  if (wait.startUp === "Clone a Repo") {
-    //incomplete
-    return "You will next clone a repo! Code coming soon!";
-  }
-  if (wait.startUp === "Get Repo Information") {
-    infoFlow();
-  }
-  if (wait.startUp === "Get a Repos Content") {
-    repoContentFlow();
-  }
-  if (wait.startUp === "Practice Questions") {
-    //incomplete
-    return "You will ppractice code! Code coming soon!";
-  }
+
+  // if (wait.startUp === "Get User Information") {
+  //   userInfoFlow();
+  // }
+  // if (wait.startUp === "Clone a Repo") {
+  //   //incomplete
+  //   return "You will next clone a repo! Code coming soon!";
+  // }
+  // if (wait.startUp === "Get Repo Information") {
+  //   infoFlow();
+  // }
+  // if (wait.startUp === "Get a Repos Content") {
+  //   repoContentFlow();
+  // }
+  // if (wait.startUp === "Practice Questions") {
+  //   //incomplete
+  //   return "You will ppractice code! Code coming soon!";
+  // }
 };
