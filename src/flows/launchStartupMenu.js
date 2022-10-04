@@ -25,27 +25,25 @@ export const nextStep = async () => {
       userInfoFlow();
       break;
     }
+    case "Clone a Repo": {
+      console.log("No Path made yet!");
+      break;
+    }
+    case "Get Repo Information": {
+      infoFlow();
+      break;
+    }
+    case "Get a Repos Content": {
+      repoContentFlow();
+      break;
+    }
+    case "Practice Questions": {
+      console.log("No Path made yet!");
+      break;
+    }
 
     default: {
       console.log("default");
     }
   }
-
-  // if (wait.startUp === "Get User Information") {
-  //   userInfoFlow();
-  // }
-  // if (wait.startUp === "Clone a Repo") {
-  //   //incomplete
-  //   return "You will next clone a repo! Code coming soon!";
-  // }
-  // if (wait.startUp === "Get Repo Information") {
-  //   infoFlow();
-  // }
-  // if (wait.startUp === "Get a Repos Content") {
-  //   repoContentFlow();
-  // }
-  // if (wait.startUp === "Practice Questions") {
-  //   //incomplete
-  //   return "You will ppractice code! Code coming soon!";
-  // }
 };
