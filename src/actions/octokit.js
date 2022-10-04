@@ -6,7 +6,7 @@ export const octokit = new Octokit({
   auth: `${process.env.GH_TOKEN}`,
 });
 
-// TODO: make a "Github gateway". Have a function called "createGithubGateway" or something.
+// todoDone: made a "Github gateway". Have a function called "createGithubGateway" or something.
 // it returns an object with every github lookup we have on it. You then modular import
 // the one you need:
 
