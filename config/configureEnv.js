@@ -2,24 +2,18 @@ import { port as userPort } from "./default.js";
 
 import askFor from "../src/inquirer/ask.js";
 
-const { NODE_CONFIG_APP_PORT, NODE_CONFIG_APP_EMAIL, GH_OWNER } = process.env;
+const { NODE_CONFIG_APP_PORT, GH_TOKEN } = process.env;
 
-const isAskEmailDisabled =
-  NODE_CONFIG_APP_EMAIL === undefined ||
-  NODE_CONFIG_APP_EMAIL === "NODE_CONFIG_APP_EMAIL";
-
-const isAskUsernameDisabled = GH_OWNER === undefined || GH_OWNER === "GH_OWNER";
+const isTokenDisabled = GH_TOKEN === undefined || GH_TOKEN === "GH_TOKEN";
 
 //will prob have to make another configureEnv() that awaits
 //github q. and then asks the required info to run octokit function
-const configureEnv = async () => {
-  const port = await configurePort();
-  const github = await configureGitHubQuestion();
-  const email = await configureEmail();
+export const configureEnv = async () => {
+  const port = configurePort();
+  const token = await configureToken();
   return {
     port,
-    github,
-    email,
+    token,
   };
 };
 
@@ -39,44 +33,20 @@ function configurePort() {
   return port;
 }
 
-//configure email
-const configureEmail = async () => {
-  let email;
+//configure token
+const configureToken = async () => {
+  let token;
   try {
-    if (isAskEmailDisabled) {
-      email = NODE_CONFIG_APP_EMAIL;
-      return email;
+    if (isTokenDisabled) {
+      token = process.env.GH_TOKEN;
+      return token;
     }
-    const { email } = await askFor("email");
-    process.env.NODE_CONFIG_APP_EMAIL = email;
-    return email;
+    const { token } = await askFor("token");
+    process.env.GH_TOKEN = token;
+    return token;
   } catch (err) {
-    console.log(err, "error during user email configuration");
+    console.log(err, "error during user token configuration");
   }
-};
-
-//configure github username
-//at some point need to check the val of this vs function
-//we made to check if un us valid on gh
-const configureUsername = async () => {
-  let owner;
-  try {
-    if (isAskUsernameDisabled) {
-      owner = GH_OWNER;
-      return owner;
-    }
-    const { owner } = await askFor("username");
-    process.env.GH_OWNER = owner;
-    return owner;
-  } catch (err) {
-    console.log(err, "error during username configuration");
-  }
-};
-
-//configure q that asks what data user wants from github
-const configureGitHubQuestion = async () => {
-  const { selectedPath } = await askFor("github");
-  return selectedPath;
 };
 
 //want to keep below function syntax b/c may use when i refactor function
@@ -106,4 +76,28 @@ const configureGitHubQuestion = async () => {
 //   }
 // };
 
-export default configureEnv;
+//should just change this function to be looking in .env and
+//checking IF process.env.includes PORT && TOKEN, but IF NOT
+//THEN throw new Error.
+export const isCriticalAppDataLoaded = async () => {
+  if (process.env.NODE_CONFIG_APP_PORT && process.env.GH_TOKEN === undefined) {
+    throw new Error(
+      "You are missing a critical environment variable. Please try restarting the app again."
+    );
+  } else {
+    //just using this log as a test rn to see the function run before
+    //launching the startup menu
+    return console.log(process.env.NODE_CONFIG_APP_PORT, process.env.GH_TOKEN);
+  }
+};
+
+// export const isCriticalAppDataLoaded = (env) => {
+//   /*   token should go here as well */
+//   const criticalEnvVariables = ["PORT"];
+
+//   if (!criticalEnvVariables.every((envVar) => env[envVar])) {
+//     throw new Error(
+//       "You are missing a critical environment variable. Please try restarting the app again."
+//     );
+//   }
+// };

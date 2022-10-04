@@ -1,5 +1,6 @@
-import { octokit } from "../index.js";
-import { configRepo } from "./index.js";
+import { octokit } from "../octokit";
+
+const configRepo = "config-checking";
 
 //gets entire obj returned from contributors of given repo
 //repo owner & repo name is required
