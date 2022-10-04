@@ -4,41 +4,39 @@
 
 import askFor from "../inquirer/ask.js";
 
-import { infoFlow } from "../actions/getRepoInfo.js";
-import { repoContentFlow } from "../actions/getRepoContent.js";
-import { userInfoFlow } from "../actions/getUserInfo.js";
+import { githubGateway } from "../actions/octokit.js";
 
+//displays startup menu q
 export const launchStartupMenu = async () => {
   const menuOfQuestions = await askFor("startup");
   return menuOfQuestions;
 };
-//publish branch to make PR
 
-//just a mock of what will happen depending on what is chosen in
-//this function works,
+//the process for what will happen depending on what
+//is chosen in launchStartupMenu()
 export const nextStep = async () => {
   const wait = await launchStartupMenu();
 
-  // TODO: move this logic into a switch case
+  //moved this logic into a switch case
   switch (wait.startUp) {
     case "Get User Information": {
-      userInfoFlow();
+      githubGateway.getUserInformation();
       break;
     }
     case "Clone a Repo": {
-      console.log("No Path made yet!");
+      githubGateway.cloneRepo();
       break;
     }
     case "Get Repo Information": {
-      infoFlow();
+      githubGateway.getRepoInformation();
       break;
     }
     case "Get a Repos Content": {
-      repoContentFlow();
+      githubGateway.getRepoContent();
       break;
     }
     case "Practice Questions": {
-      console.log("No Path made yet!");
+      githubGateway.practiceQuestions();
       break;
     }
 
