@@ -96,5 +96,10 @@ export const githubGateway = {
     let buff = Buffer.from(repoContents, "base64");
     let data = buff.toString();
     console.log(data);
+
+    //here for now WILL MOVE,
+    //doing Function() constructor to run function user makes
+    const sumArray = new Function(`${data}`)();
+    console.log(sumArray([1, 2, 3, 4]));
   },
 };
