@@ -2,6 +2,7 @@ const repoNameQuestion = {
   type: "input",
   name: "ghRepoName",
   message: "What is the repo's name?",
+  default: "config-checking",
   //validate that the answer
   validate(answer) {
     //an empty answer would be false,
