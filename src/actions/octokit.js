@@ -70,8 +70,12 @@ export const githubGateway = {
   },
 
   practiceQuestions: async () => {
+    //first ask what question they would like to try
     const question = await askFor("solvequestion");
 
+    //will change to have switch cases depending on what is chosen in
+    //askFor("solvequestion"), but for now will keep simple b/c all
+    //paths get a repos content, decode it, and run decoded function
     const owner = await askFor("username");
 
     const repo = await askFor("repo");
