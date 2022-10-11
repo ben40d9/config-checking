@@ -5,6 +5,7 @@ import { tokenQuestion } from "./token.js";
 import { startupQuestion } from "./startupMenu.js";
 import { repoNameQuestion } from "./repoName.js";
 import { whatPathQuestion } from "./whatPath.js";
+import { whichPracticeQuestion } from "./whichPracticeQuestion.js";
 
 export {
   emailQuestion,
@@ -14,4 +15,5 @@ export {
   startupQuestion,
   repoNameQuestion,
   whatPathQuestion,
+  whichPracticeQuestion,
 };

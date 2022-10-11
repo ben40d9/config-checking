@@ -9,6 +9,7 @@ import {
   startupQuestion,
   repoNameQuestion,
   whatPathQuestion,
+  whichPracticeQuestion,
 } from "./prompts/index.js";
 
 const questionsMap = {
@@ -19,6 +20,7 @@ const questionsMap = {
   startup: startupQuestion,
   repo: repoNameQuestion,
   path: whatPathQuestion,
+  solvequestion: whichPracticeQuestion,
 };
 
 const askFor = async (keyFromQuestionsMap) => {
