@@ -2,7 +2,7 @@ const whatPathQuestion = {
   type: "input",
   name: "filePath",
   message: "What is the path to the file that you want to find?",
-  default: "src/actions/testFunction/test.js",
+  default: "testing/newTest.js",
   //validate that the answer
   validate(answer) {
     //an empty answer would be false,
