@@ -49,33 +49,6 @@ const configureToken = async () => {
   }
 };
 
-//want to keep below function syntax b/c may use when i refactor function
-//to send dif inq questions based on their returned answer from configureGitHubQuestion
-
-// const configureGitHubQuestion = async () => {
-//   const { selectedPath } = await askFor("github");
-//   try {
-//     if (selectedPath === "Get User Information") {
-//       console.log(selectedPath);
-//       return selectedPath;
-//     }
-//     if (selectedPath === "List Repos That User Owns") {
-//       console.log(selectedPath);
-//       return selectedPath;
-//     }
-//     if (selectedPath === "Get Repo Information") {
-//       console.log(selectedPath);
-//       return selectedPath;
-//     }
-//     if (selectedPath === "Get All Contributors On Repo") {
-//       console.log(selectedPath);
-//       return selectedPath;
-//     }
-//   } catch (err) {
-//     console.log(err, "an err has occurred");
-//   }
-// };
-
 //should just change this function to be looking in .env and
 //checking IF process.env.includes PORT && TOKEN, but IF NOT
 //THEN throw new Error.
@@ -90,14 +63,3 @@ export const isCriticalAppDataLoaded = async () => {
     return console.log(process.env.NODE_CONFIG_APP_PORT, process.env.GH_TOKEN);
   }
 };
-
-// export const isCriticalAppDataLoaded = (env) => {
-//   /*   token should go here as well */
-//   const criticalEnvVariables = ["PORT"];
-
-//   if (!criticalEnvVariables.every((envVar) => env[envVar])) {
-//     throw new Error(
-//       "You are missing a critical environment variable. Please try restarting the app again."
-//     );
-//   }
-// };

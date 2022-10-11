@@ -4,24 +4,40 @@
 
 import askFor from "../inquirer/ask.js";
 
-import { infoFlow } from "../actions/getRepoInfo.js";
-import { repoContentFlow } from "../actions/getRepoContent.js";
-import { userInfoFlow } from "../actions/getUserInfo.js";
+import { githubGateway } from "../actions/octokit.js";
 
+//displays startup menu q
 export const launchStartupMenu = async () => {
   const menuOfQuestions = await askFor("startup");
   return menuOfQuestions;
 };
 
-//just a mock of what will happen depending on what is chosen in
-//this function works,
+//the process for what will happen depending on what
+//is chosen in launchStartupMenu()
 export const nextStep = async () => {
   const wait = await launchStartupMenu();
 
-  // TODO: move this logic into a switch case
+  //moved this logic into a switch case
   switch (wait.startUp) {
     case "Get User Information": {
-      userInfoFlow();
+      githubGateway.getUserInformation();
+      break;
+    }
+    case "Clone a Repo": {
+      githubGateway.cloneRepo();
+      break;
+    }
+    case "Get Repo Information": {
+      githubGateway.getRepoInformation();
+      break;
+    }
+    case "Get a Repos Content": {
+      githubGateway.getRepoContent();
+      //here is where i return repo content
+      break;
+    }
+    case "Practice Questions": {
+      githubGateway.practiceQuestions();
       break;
     }
 
@@ -29,22 +45,4 @@ export const nextStep = async () => {
       console.log("default");
     }
   }
-
-  // if (wait.startUp === "Get User Information") {
-  //   userInfoFlow();
-  // }
-  // if (wait.startUp === "Clone a Repo") {
-  //   //incomplete
-  //   return "You will next clone a repo! Code coming soon!";
-  // }
-  // if (wait.startUp === "Get Repo Information") {
-  //   infoFlow();
-  // }
-  // if (wait.startUp === "Get a Repos Content") {
-  //   repoContentFlow();
-  // }
-  // if (wait.startUp === "Practice Questions") {
-  //   //incomplete
-  //   return "You will ppractice code! Code coming soon!";
-  // }
 };
