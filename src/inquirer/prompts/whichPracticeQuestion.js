@@ -2,13 +2,13 @@
 const whichPracticeQuestion = {
   type: "list",
   name: "startUp",
-  message: "What question would you like to solve?",
+  message: "What function would you like to attempt to solve?",
   choices: [
-    "This One",
-    "Return Sum Of Array",
-    "Maybe This One",
-    "Or This One",
-    "Has To Be This One",
+    "Takes a Year & Returns NBA Champion From That Year",
+    "Takes a Teams Name and Tell All Of The Years That They Have Won The Championship",
+    "Takes a Year & Returns NBA Finals MVP From That Year",
+    "Test : Sum of Values in Array",
+    "Do You Want To Choose This One?",
   ],
   filter(val) {
     return val;
