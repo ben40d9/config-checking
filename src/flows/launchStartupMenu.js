@@ -33,6 +33,7 @@ export const nextStep = async () => {
     }
     case "Get a Repos Content": {
       githubGateway.getRepoContent();
+      //here is where i return repo content
       break;
     }
     case "Practice Questions": {
