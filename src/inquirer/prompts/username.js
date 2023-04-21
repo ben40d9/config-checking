@@ -2,6 +2,7 @@ const usernameQuestion = {
   type: "input",
   name: "ghUsername",
   message: "What's your GitHub username?",
+  default: "ben40d9",
   //validate that the answer
   validate(answer) {
     //an empty answer would be false,

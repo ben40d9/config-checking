@@ -70,6 +70,40 @@ export const githubGateway = {
   },
 
   practiceQuestions: async () => {
-    console.log("Path Not Set up yet!");
+    //first ask what question they would like to try
+    const question = await askFor("solvequestion");
+
+    //will change to have switch cases depending on what is chosen in
+    //askFor("solvequestion"), but for now will keep simple b/c all
+    //paths get a repos content, decode it, and run decoded function
+    const owner = await askFor("username");
+
+    const repo = await askFor("repo");
+
+    const path = await askFor("path");
+
+    //function to get a specific files' contents
+    const allRepoContents = await octokit.request(
+      "GET /repos/{owner}/{repo}/contents/{path}",
+      {
+        owner: `${owner.ghUsername}`,
+        repo: `${repo.ghRepoName}`,
+        path: `${path.filePath}`,
+      }
+    );
+
+    //set up to get .data.content, will return in Base64
+    const repoContents = allRepoContents.data.content;
+    //console.log(repoContents)
+
+    //need to set up function to translate from Base64
+    let buff = Buffer.from(repoContents, "base64");
+    let data = buff.toString();
+    console.log(data);
+
+    //here for now WILL MOVE,
+    //doing Function() constructor to run function user makes
+    const sumArray = new Function(`${data}`)();
+    console.log(sumArray([1, 2, 3, 4]));
   },
 };
